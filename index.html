@@ -1,0 +1,353 @@
+<html>
+<head>
+  <title>BestelllisteCanSupermarkt</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+    input, select {
+      font-size: 18px;
+      padding: 5px 10px;
+      margin-left: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bestellliste</h1>
+
+  <!-- Auswahl Supermarkt -->
+  <label for="supermarkt">Supermarkt auswählen:</label>
+  <select id="supermarkt">
+    <option value="Can 1">Can 1</option>
+    <option value="Can 2">Can 2</option>
+  </select>
+
+  <ul id="product-list">
+ <li>Aloe Vera <input type="number" value="" min="0"></li>
+  <li>Ananas <input type="number" value="" min="0"></li>
+  <li>Apfel Bodensee <input type="number" value="" min="0"></li>
+  <li>Apfel red Prince <input type="number" value="" min="0"></li>
+  <li>Aprikosen <input type="number" value="" min="0"></li>
+  <li>aprikosen KG <input type="number" value="" min="0"></li>
+  <li>Artischocken <input type="number" value="" min="0"></li>
+  <li>Aubergine <input type="number" value="" min="0"></li>
+  <li>Aubergine Pack <input type="number" value="" min="0"></li>
+  <li>Auberginen groß Zebra <input type="number" value="" min="0"></li>
+  <li>Auberginen lose <input type="number" value="" min="0"></li>
+  <li>Avocado <input type="number" value="" min="0"></li>
+  <li>ayva <input type="number" value="" min="0"></li>
+  <li>Baby Artischocken <input type="number" value="" min="0"></li>
+  <li>babyspinat <input type="number" value="" min="0"></li>
+  <li>Bananen <input type="number" value="" min="0"></li>
+  <li>barbunya <input type="number" value="" min="0"></li>
+  <li>Basilikum Topf <input type="number" value="" min="0"></li>
+  <li>biattclementienen <input type="number" value="" min="0"></li>
+  <li>Bio Zitronen <input type="number" value="" min="0"></li>
+  <li>Birnen abate 1kg <input type="number" value="" min="0"></li>
+  <li>Birnen abate kg <input type="number" value="" min="0"></li>
+  <li>Birnen Carmen ita <input type="number" value="" min="0"></li>
+  <li>Birnen deveci tr <input type="number" value="" min="0"></li>
+  <li>Birnen Forelle <input type="number" value="" min="0"></li>
+  <li>Birnen Lukas ita <input type="number" value="" min="0"></li>
+  <li>Birnen nashi <input type="number" value="" min="0"></li>
+  <li>Birnen Santa <input type="number" value="" min="0"></li>
+  <li>blattspinat <input type="number" value="" min="0"></li>
+  <li>blaubeere <input type="number" value="" min="0"></li>
+  <li>blaukraut <input type="number" value="" min="0"></li>
+  <li>Blumenkohl <input type="number" value="" min="0"></li>
+  <li>blutorangen <input type="number" value="" min="0"></li>
+  <li>Bohnen <input type="number" value="" min="0"></li>
+  <li>bohnenpack <input type="number" value="" min="0"></li>
+  <li>breite Bohnen <input type="number" value="" min="0"></li>
+  <li>Brokkoli <input type="number" value="" min="0"></li>
+  <li>Brombeeren <input type="number" value="" min="0"></li>
+  <li>buschbohnen <input type="number" value="" min="0"></li>
+  <li>butternut-Kürbis <input type="number" value="" min="0"></li>
+  <li>can Erik <input type="number" value="" min="0"></li>
+  <li>cherimoya <input type="number" value="" min="0"></li>
+  <li>Chili bullet <input type="number" value="" min="0"></li>
+  <li>chili lose <input type="number" value="" min="0"></li>
+  <li>chinakohl <input type="number" value="" min="0"></li>
+  <li>Cima di Rappa ita <input type="number" value="" min="0"></li>
+  <li>cimata <input type="number" value="" min="0"></li>
+  <li>Dill Bund <input type="number" value="" min="0"></li>
+  <li>Eier Tomaten <input type="number" value="" min="0"></li>
+  <li>einlegegurken Erdnüsse lose <input type="number" value="" min="0"></li>
+  <li>Eisbergsalat <input type="number" value="" min="0"></li>
+  <li>Erdbeeren <input type="number" value="" min="0"></li>
+  <li>Feigen <input type="number" value="" min="0"></li>
+  <li>Feigen ita feldsalat <input type="number" value="" min="0"></li>
+  <li>Fenchel Spa flachkraut tr kg <input type="number" value="" min="0"></li>
+  <li>fleischtomaten/ rundtomaten <input type="number" value="" min="0"></li>
+  <li>frisch grün <input type="number" value="" min="0"></li>
+  <li>frische Datteln <input type="number" value="" min="0"></li>
+  <li>frische Erbsen <input type="number" value="" min="0"></li>
+  <li>frische Oliven <input type="number" value="" min="0"></li>
+  <li>frühkartoffeln frisch <input type="number" value="" min="0"></li>
+  <li>gelbe Zucchini <input type="number" value="" min="0"></li>
+  <li>granadilla <input type="number" value="" min="0"></li>
+  <li>Granatapfel <input type="number" value="" min="0"></li>
+  <li>Granatapfel sauer <input type="number" value="" min="0"></li>
+  <li>Granatapfel süß <input type="number" value="" min="0"></li>
+  <li>Grapefruit <input type="number" value="" min="0"></li>
+  <li>grüne Tomaten <input type="number" value="" min="0"></li>
+  <li>grüne Zucchini Spa <input type="number" value="" min="0"></li>
+  <li>grünkohl <input type="number" value="" min="0"></li>
+  <li>gurken Acur <input type="number" value="" min="0"></li>
+  <li>Gurken Kelek <input type="number" value="" min="0"></li>
+  <li>Gurken lang guava <input type="number" value="" min="0"></li>
+  <li>habanero Paprika rot <input type="number" value="" min="0"></li>
+  <li>Haselnüsse <input type="number" value="" min="0"></li>
+  <li>Haushaltszwiebeln <input type="number" value="" min="0"></li>
+  <li>Heidelbeeren <input type="number" value="" min="0"></li>
+  <li>Himbeertomaten <input type="number" value="" min="0"></li>
+  <li>Hokkaido kürbis <input type="number" value="" min="0"></li>
+  <li>Honigmelone galia kg <input type="number" value="" min="0"></li>
+  <li>Honigmelone gelb <input type="number" value="" min="0"></li>
+  <li>Honigmelone grün Spa <input type="number" value="" min="0"></li>
+  <li>Honigmelone tr <input type="number" value="" min="0"></li>
+  <li>Honigpfirsich <input type="number" value="" min="0"></li>
+  <li>Ingwer <input type="number" value="" min="0"></li>
+  <li>jalapenos <input type="number" value="" min="0"></li>
+  <li>Johannbrot <input type="number" value="" min="0"></li>
+  <li>kaktusfeigen <input type="number" value="" min="0"></li>
+  <li>Kapya <input type="number" value="" min="0"></li>
+  <li>Kara Lahana <input type="number" value="" min="0"></li>
+  <li>karella <input type="number" value="" min="0"></li>
+  <li>Karotten <input type="number" value="" min="0"></li>
+  <li>Karotten bund <input type="number" value="" min="0"></li>
+  <li>Kartoffeln <input type="number" value="" min="0"></li>
+  <li>Kartoffeln 2 <input type="number" value="" min="0"></li>
+  <li>Kartoffeln gewaschen <input type="number" value="" min="0"></li>
+  <li>Kartoffeln ungewaschen <input type="number" value="" min="0"></li>
+  <li>kil sivri <input type="number" value="" min="0"></li>
+  <li>Kirschen <input type="number" value="" min="0"></li>
+  <li>Kiwi gold <input type="number" value="" min="0"></li>
+  <li>Kiwi ita <input type="number" value="" min="0"></li>
+  <li>Knoblauch 500 g <input type="number" value="" min="0"></li>
+  <li>Knoblauch frisch <input type="number" value="" min="0"></li>
+  <li>kochbananen <input type="number" value="" min="0"></li>
+  <li>Kohlrabi <input type="number" value="" min="0"></li>
+  <li>Kokosnuss <input type="number" value="" min="0"></li>
+  <li>kopfsalat <input type="number" value="" min="0"></li>
+  <li>korianderbund Spa <input type="number" value="" min="0"></li>
+  <li>krautstück <input type="number" value="" min="0"></li>
+  <li>krumme Gurken <input type="number" value="" min="0"></li>
+  <li>Kumquat <input type="number" value="" min="0"></li>
+  <li>Kurkuma <input type="number" value="" min="0"></li>
+  <li>kürbis bal <input type="number" value="" min="0"></li>
+  <li>Kürbis Muskat <input type="number" value="" min="0"></li>
+  <li>Lauch <input type="number" value="" min="0"></li>
+  <li>lauchzwiebel <input type="number" value="" min="0"></li>
+  <li>Limetten <input type="number" value="" min="0"></li>
+  <li>Litschi <input type="number" value="" min="0"></li>
+  <li>löwenzahn <input type="number" value="" min="0"></li>
+  <li>mairüben Bund <input type="number" value="" min="0"></li>
+  <li>Mais frisch de <input type="number" value="" min="0"></li>
+  <li>Mais frisch tf <input type="number" value="" min="0"></li>
+  <li>Malve <input type="number" value="" min="0"></li>
+  <li>Mandarinen <input type="number" value="" min="0"></li>
+  <li>mandarinen satsumas <input type="number" value="" min="0"></li>
+  <li>Mango kent <input type="number" value="" min="0"></li>
+  <li>Mango sweet <input type="number" value="" min="0"></li>
+  <li>Mangold <input type="number" value="" min="0"></li>
+  <li>Mangold bund <input type="number" value="" min="0"></li>
+  <li>Manyok <input type="number" value="" min="0"></li>
+  <li>Maroni <input type="number" value="" min="0"></li>
+  <li>medjoul Datteln schwarz <input type="number" value="" min="0"></li>
+  <li>Meerrettich <input type="number" value="" min="0"></li>
+  <li>metzgerzwiebeln <input type="number" value="" min="0"></li>
+  <li>Mini Aubergine Spa <input type="number" value="" min="0"></li>
+  <li>Mini Birnen <input type="number" value="" min="0"></li>
+  <li>Mini Gurke Spa <input type="number" value="" min="0"></li>
+  <li>Mini Kartoffeln <input type="number" value="" min="0"></li>
+  <li>mini-zucchini weiß tr Mirabellen <input type="number" value="" min="0"></li>
+  <li>Minze bund <input type="number" value="" min="0"></li>
+  <li>mispeln <input type="number" value="" min="0"></li>
+  <li>mix Salat <input type="number" value="" min="0"></li>
+  <li>Nektarinen <input type="number" value="" min="0"></li>
+  <li>netzmelone <input type="number" value="" min="0"></li>
+  <li>novita Salat <input type="number" value="" min="0"></li>
+  <li>ochsenherz <input type="number" value="" min="0"></li>
+  <li>okra bamya lose <input type="number" value="" min="0"></li>
+  <li>Orangen <input type="number" value="" min="0"></li>
+  <li>Pak choi <input type="number" value="" min="0"></li>
+  <li>palmkohlbund <input type="number" value="" min="0"></li>
+  <li>Papayas <input type="number" value="" min="0"></li>
+  <li>Paprika carliston <input type="number" value="" min="0"></li>
+  <li>Paprika Dolma Biber 400g <input type="number" value="" min="0"></li>
+  <li>Paprika sivri <input type="number" value="" min="0"></li>
+  <li>Paprika spitz <input type="number" value="" min="0"></li>
+  <li>paraguayos <input type="number" value="" min="0"></li>
+  <li>Passionsfrucht <input type="number" value="" min="0"></li>
+  <li>Pastinake <input type="number" value="" min="0"></li>
+  <li>Peperoni grün <input type="number" value="" min="0"></li>
+  <li>Peperoni rot <input type="number" value="" min="0"></li>
+  <li>pepper rot 250g tr <input type="number" value="" min="0"></li>
+  <li>persimon Kaki kg <input type="number" value="" min="0"></li>
+  <li>Petersilie Bund ita <input type="number" value="" min="0"></li>
+  <li>petersilienwurzel de <input type="number" value="" min="0"></li>
+  <li>Pfirsiche pflaumengelb <input type="number" value="" min="0"></li>
+  <li>pflaumen rot + blau <input type="number" value="" min="0"></li>
+  <li>Pilze Austern <input type="number" value="" min="0"></li>
+  <li>Pilze Champignon <input type="number" value="" min="0"></li>
+  <li>platterina <input type="number" value="" min="0"></li>
+  <li>pomelo <input type="number" value="" min="0"></li>
+  <li>portulak <input type="number" value="" min="0"></li>
+  <li>radicchio <input type="number" value="" min="0"></li>
+  <li>Radieschen <input type="number" value="" min="0"></li>
+  <li>Rettich lang <input type="number" value="" min="0"></li>
+  <li>Rhabarber <input type="number" value="" min="0"></li>
+  <li>Romana <input type="number" value="" min="0"></li>
+  <li>romanesco <input type="number" value="" min="0"></li>
+  <li>rosenkohl <input type="number" value="" min="0"></li>
+  <li>rote <input type="number" value="" min="0"></li>
+  <li>rote Beete Bund <input type="number" value="" min="0"></li>
+  <li>rote Beete de <input type="number" value="" min="0"></li>
+  <li>rote pitahaya <input type="number" value="" min="0"></li>
+  <li>rote spitzpaprika kapia 400gr <input type="number" value="" min="0"></li>
+  <li>Rucola rund <input type="number" value="" min="0"></li>
+  <li>Rucola Schale <input type="number" value="" min="0"></li>
+  <li>saftorangen <input type="number" value="" min="0"></li>
+  <li>salatherzen <input type="number" value="" min="0"></li>
+  <li>saubohnen Bakla <input type="number" value="" min="0"></li>
+  <li>sauerkirschen <input type="number" value="" min="0"></li>
+  <li>schalotten <input type="number" value="" min="0"></li>
+  <li>schlangenbohnen <input type="number" value="" min="0"></li>
+  <li>Schnittlauch <input type="number" value="" min="0"></li>
+  <li>schwarze navetten <input type="number" value="" min="0"></li>
+  <li>Schälnüsse <input type="number" value="" min="0"></li>
+  <li>selleriewurzel <input type="number" value="" min="0"></li>
+  <li>somborko spitzpaprika scharf <input type="number" value="" min="0"></li>
+  <li>Spargel <input type="number" value="" min="0"></li>
+  <li>speisezwiebeln <input type="number" value="" min="0"></li>
+  <li>Spinat <input type="number" value="" min="0"></li>
+  <li>spinat Bund <input type="number" value="" min="0"></li>
+  <li>spitzkraut <input type="number" value="" min="0"></li>
+  <li>Staundensellerie <input type="number" value="" min="0"></li>
+  <li>strauchtomaten <input type="number" value="" min="0"></li>
+  <li>sultanas Trauben <input type="number" value="" min="0"></li>
+  <li>Süßkartoffeln <input type="number" value="" min="0"></li>
+  <li>tere <input type="number" value="" min="0"></li>
+  <li>Thymian <input type="number" value="" min="0"></li>
+  <li>Tomaten Cocktail <input type="number" value="" min="0"></li>
+  <li>Tomaten gelb <input type="number" value="" min="0"></li>
+  <li>Tomaten grün <input type="number" value="" min="0"></li>
+  <li>tomaten kumato <input type="number" value="" min="0"></li>
+  <li>Topinambur <input type="number" value="" min="0"></li>
+  <li>Traube Rose <input type="number" value="" min="0"></li>
+  <li>Trauben hell Kern <input type="number" value="" min="0"></li>
+  <li>trauben rose kernlos <input type="number" value="" min="0"></li>
+  <li>tropea Zwiebeln <input type="number" value="" min="0"></li>
+  <li>Walnüsse <input type="number" value="" min="0"></li>
+  <li>wassermelone <input type="number" value="" min="0"></li>
+  <li>weiches Kraut <input type="number" value="" min="0"></li>
+  <li>weiße <input type="number" value="" min="0"></li>
+  <li>weiße Zucchini <input type="number" value="" min="0"></li>
+  <li>weißkohl <input type="number" value="" min="0"></li>
+  <li>yamswurzel <input type="number" value="" min="0"></li>
+  <li>Zitronen <input type="number" value="" min="0"></li>
+  <li>Zitronen 750 g <input type="number" value="" min="0"></li>
+  <li>Zucchini 500 g <input type="number" value="" min="0"></li>
+  <li>Zucchini Blüten 60 g <input type="number" value="" min="0"></li>
+  <li>Zucchini rondini <input type="number" value="" min="0"></li>
+  <li>Zucchini Schale 1000 g <input type="number" value="" min="0"></li>
+  <li>Zucchini weiß 1 kg <input type="number" value="" min="0"></li>
+  <li>Zucchini weiß 750 g <input type="number" value="" min="0"></li>
+  <li>Zucker Aprikosen 350 g <input type="number" value="" min="0"></li>
+  <li>Zucker Aprikosen kg <input type="number" value="" min="0"></li>
+  <li>Zucker Mais 2st <input type="number" value="" min="0"></li>
+  <li>zuckerschoten 250 g <input type="number" value="" min="0"></li>
+  <li>Zwetschgen <input type="number" value="" min="0"></li>
+  <li>zwiebel rot ita <input type="number" value="" min="0"></li>
+  <li>Zwiebel weiß ita <input type="number" value="" min="0"></li>
+  <li>Äpfel golden kg <input type="number" value="" min="0"></li>
+  <li>Äpfel grün kg <input type="number" value="" min="0"></li>
+  <li>äpfel rot KG <input type="number" value="" min="0"></li>
+
+  </ul>
+
+  <button onclick="generatePDF()">Liste absenden</button>
+
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    function generatePDF() {
+      const doc = new jsPDF();
+      doc.setFontSize(16);
+
+      const markt = document.getElementById("supermarkt").value;
+
+      // Titel + ausgewählter Supermarkt
+      doc.text("Bestellliste", 10, 10);
+      doc.setFontSize(14);
+      doc.text("Supermarkt: " + markt, 10, 20);
+
+      const items = document.querySelectorAll("#product-list li");
+      let x = 10;
+      let y = 35; // etwas tiefer, wegen Titel
+      let colWidth = 90; 
+      let rowHeight = 10; 
+      let maxHeight = 280; 
+      let col = 0;
+
+      items.forEach(item => {
+        const name = item.childNodes[0].textContent.trim();
+        const qty = item.querySelector("input").value;
+        if (qty > 0) {
+          doc.text(`${name}: ${qty}`, x + col * colWidth, y);
+
+          y += rowHeight;
+
+          if (y > maxHeight) {
+            if (col === 0) {
+              col = 1;
+              y = 35;
+            } else {
+              doc.addPage();
+              col = 0;
+              y = 20;
+            }
+          }
+        }
+      });
+
+      doc.save("Bestellliste.pdf");
+      alert("PDF erstellt! Bitte ausdrucken.");
+    }
+  </script>
+</body>
+</html>
