@@ -300,54 +300,30 @@
 
   </ul>
 
-  <button onclick="generatePDF()">Liste absenden</button>
+<button onclick="sendMail()">Liste absenden</button>
 
-  <script>
-    const { jsPDF } = window.jspdf;
+<script>
+  function sendMail() {
+    const supermarkt = document.getElementById("supermarkt").value;
+    const items = document.querySelectorAll("#product-list li");
+    let body = "Bestellliste für " + supermarkt + ":\n\n";
 
-    function generatePDF() {
-      const doc = new jsPDF();
-      doc.setFontSize(16);
+    items.forEach(item => {
+      const name = item.childNodes[0].textContent.trim();
+      const qty = item.querySelector("input").value;
+      if (qty > 0) {
+        body += `${name}: ${qty}\n`;
+      }
+    });
 
-      const markt = document.getElementById("supermarkt").value;
+    const recipient = "gc1982@hotmail.de";
 
-      // Titel + ausgewählter Supermarkt
-      doc.text("Bestellliste", 10, 10);
-      doc.setFontSize(14);
-      doc.text("Supermarkt: " + markt, 10, 20);
+    const mailtoLink = "mailto:" + recipient +
+      "?subject=" + encodeURIComponent("Bestellliste " + supermarkt) +
+      "&body=" + encodeURIComponent(body);
 
-      const items = document.querySelectorAll("#product-list li");
-      let x = 10;
-      let y = 35; // etwas tiefer, wegen Titel
-      let colWidth = 90; 
-      let rowHeight = 10; 
-      let maxHeight = 280; 
-      let col = 0;
-
-      items.forEach(item => {
-        const name = item.childNodes[0].textContent.trim();
-        const qty = item.querySelector("input").value;
-        if (qty > 0) {
-          doc.text(`${name}: ${qty}`, x + col * colWidth, y);
-
-          y += rowHeight;
-
-          if (y > maxHeight) {
-            if (col === 0) {
-              col = 1;
-              y = 35;
-            } else {
-              doc.addPage();
-              col = 0;
-              y = 20;
-            }
-          }
-        }
-      });
-
-      doc.save("Bestellliste.pdf");
-      alert("PDF erstellt! Bitte ausdrucken.");
-    }
-  </script>
+    window.location.href = mailtoLink;
+  }
+</script>
 </body>
 </html>
