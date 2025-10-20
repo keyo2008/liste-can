@@ -379,33 +379,34 @@
   const supermarktSelect = document.getElementById("supermarkt");
   const productInputs = document.querySelectorAll("#product-list li input");
 
-  // Daten speichern
-  function saveData() {
-    const products = [];
-    productInputs.forEach((input, index) => {
-      products.push({ index: index, value: input.value });
-    });
-    localStorage.setItem("bestellListeProdukte", JSON.stringify(products));
-    localStorage.setItem("bestellListeSupermarkt", supermarktSelect.value);
-  }
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const supermarktSelect = document.getElementById("supermarkt");
+    const productInputs = document.querySelectorAll("#product-list li input");
 
-  function loadData() {
     const savedProducts = JSON.parse(localStorage.getItem("bestellListeProdukte"));
     if (savedProducts) {
       savedProducts.forEach(item => {
         if (productInputs[item.index]) productInputs[item.index].value = item.value;
       });
     }
+
     const savedSupermarkt = localStorage.getItem("bestellListeSupermarkt");
     if (savedSupermarkt) supermarktSelect.value = savedSupermarkt;
-  }
 
-  
-  productInputs.forEach(input => input.addEventListener("input", saveData));
-  supermarktSelect.addEventListener("change", saveData);
+    productInputs.forEach(input => input.addEventListener("input", () => {
+      const products = [];
+      productInputs.forEach((inp, idx) => products.push({index: idx, value: inp.value}));
+      localStorage.setItem("bestellListeProdukte", JSON.stringify(products));
+      localStorage.setItem("bestellListeSupermarkt", supermarktSelect.value);
+    }));
 
- 
-  window.addEventListener("load", loadData);
+    supermarktSelect.addEventListener("change", () => {
+      localStorage.setItem("bestellListeSupermarkt", supermarktSelect.value);
+    });
+  });
+
+
 </script>
 
   }
