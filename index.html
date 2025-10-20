@@ -1,37 +1,72 @@
 <html>
 <head>
-  <title>BestelllisteCanSupermarkt</title>
+  <title>Bestellliste Can Supermarkt</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
       font-size: 18px;
-      padding: 20px;
+      background-color: #f9f9f9;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      padding: 30px;
     }
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
+      text-align: center;
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    select, input {
+      width: 100%;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
 
     ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
 
     li {
-      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
     }
 
-    input, select {
-      font-size: 18px;
-      padding: 5px 10px;
-      margin-left: 10px;
+    li:nth-child(even) {
+      background-color: #f7f7f7;
     }
 
     button {
-      margin-top: 20px;
-      padding: 12px 20px;
+      display: block;
+      width: 100%;
+      margin-top: 30px;
+      padding: 14px;
       font-size: 20px;
       border: none;
       border-radius: 8px;
@@ -46,14 +81,17 @@
   </style>
 </head>
 <body>
-  <h1>Bestellliste</h1>
+  <div class="container">
+    <h1>🛒 Bestellliste</h1>
 
-  <!-- Auswahl Supermarkt -->
-  <label for="supermarkt">Supermarkt auswählen:</label>
-  <select id="supermarkt">
-    <option value="Can 1">Can 1</option>
-    <option value="Can 2">Can 2</option>
-  </select>
+    <!-- Auswahl Supermarkt -->
+    <div class="section">
+      <label for="supermarkt">Supermarkt auswählen:</label>
+      <select id="supermarkt">
+        <option value="Can 1">Can 1</option>
+        <option value="Can 2">Can 2</option>
+      </select>
+    </div>
 
   <ul id="product-list">
   <li>Äpfel golden kg <input type="number" value="" min="0"></li>
@@ -108,7 +146,6 @@
   <li>Cin Chili grüne <input type="number" value="" min="0"></li>
   <li>Dill Bund <input type="number" value="" min="0"></li>
   <li>Erdnüsse lose <input type="number" value="" min="0"></li>
-  <li>einlegegurken <input type="number" value="" min="0"></li>
   <li>Erdbeeren <input type="number" value="" min="0"></li>
   <li>Feigen tr <input type="number" value="" min="0"></li>
   <li>Feigen ita <input type="number" value="" min="0"></li>
@@ -130,8 +167,11 @@
   <li>grünkohl <input type="number" value="" min="0"></li>
   <li>gurken Acur <input type="number" value="" min="0"></li>
   <li>Gurken Kelek <input type="number" value="" min="0"></li>
-  <li>Gurken guava <input type="number" value="" min="0"></li>
-  <li>Gurken guava <input type="number" value="" min="0"></li>
+  <li>Gurken krumme<input type="number" value="" min="0"></li>
+  <li>Gurken lange<input type="number" value="" min="0"></li>
+  <li>einlegegurken <input type="number" value="" min="0"></li>
+  <li>Mini Gurke <input type="number" value="" min="0"></li>
+  <li>guava <input type="number" value="" min="0"></li>
   <li>habanero Paprika rot <input type="number" value="" min="0"></li>
   <li>Haselnüsse <input type="number" value="" min="0"></li>
   <li>Haushaltszwiebeln <input type="number" value="" min="0"></li>
@@ -167,7 +207,6 @@
   <li>Kohlrabi <input type="number" value="" min="0"></li>
   <li>Kokosnuss <input type="number" value="" min="0"></li>
   <li>koriander bund <input type="number" value="" min="0"></li>
-  <li>krumme Gurken <input type="number" value="" min="0"></li>
   <li>Kumquat <input type="number" value="" min="0"></li>
   <li>Kurkuma <input type="number" value="" min="0"></li>
   <li>kürbis bal <input type="number" value="" min="0"></li>
@@ -192,7 +231,6 @@
   <li>Maroni <input type="number" value="" min="0"></li>
   <li>medjoul Datteln <input type="number" value="" min="0"></li>
   <li>Meerrettich <input type="number" value="" min="0"></li>
-  <li>Mini Gurke <input type="number" value="" min="0"></li>
   <li>Mirabellen <input type="number" value="" min="0"></li>
   <li>Minze bund <input type="number" value="" min="0"></li>
   <li>mispeln <input type="number" value="" min="0"></li>
