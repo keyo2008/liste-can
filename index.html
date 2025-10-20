@@ -353,8 +353,10 @@
   </ul>
 
 
+<button id="sendMailBtn">Liste absenden</button>
+
 <script>
-  function sendMail() {
+  document.getElementById("sendMailBtn").addEventListener("click", function() {
     const supermarkt = document.getElementById("supermarkt").value;
     const items = document.querySelectorAll("#product-list li");
     let body = "Bestellliste für " + supermarkt + ":\n\n";
@@ -368,41 +370,11 @@
     });
 
     const recipients = "gc1982@hotmail.de, perlach@cansupermarkt.de";
-
     const mailtoLink = "mailto:" + recipients +
       "?subject=" + encodeURIComponent("Bestellliste " + supermarkt) +
       "&body=" + encodeURIComponent(body);
 
     window.location.href = mailtoLink;
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const supermarktSelect = document.getElementById("supermarkt");
-    const productInputs = document.querySelectorAll("#product-list li input");
-
-
-    const savedProducts = JSON.parse(localStorage.getItem("bestellListeProdukte"));
-    if (savedProducts) {
-      savedProducts.forEach(item => {
-        if (productInputs[item.index]) productInputs[item.index].value = item.value;
-      });
-    }
-
-    const savedSupermarkt = localStorage.getItem("bestellListeSupermarkt");
-    if (savedSupermarkt) supermarktSelect.value = savedSupermarkt;
-
-
-    productInputs.forEach(input => input.addEventListener("input", () => {
-      const products = [];
-      productInputs.forEach((inp, idx) => products.push({index: idx, value: inp.value}));
-      localStorage.setItem("bestellListeProdukte", JSON.stringify(products));
-      localStorage.setItem("bestellListeSupermarkt", supermarktSelect.value);
-    }));
-
-    supermarktSelect.addEventListener("change", () => {
-      localStorage.setItem("bestellListeSupermarkt", supermarktSelect.value);
-    });
   });
 </script>
     
