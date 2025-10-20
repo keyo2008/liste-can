@@ -352,9 +352,39 @@
     
   </ul>
 
-<button onclick="sendMail()">Liste absenden</button>
 
+</script>
 <script>
+  // --- LOCAL STORAGE ---
+  window.addEventListener("DOMContentLoaded", () => {
+    const supermarktSelect = document.getElementById("supermarkt");
+    const productInputs = document.querySelectorAll("#product-list li input");
+
+    // gespeicherte Werte laden
+    const savedProducts = JSON.parse(localStorage.getItem("bestellListeProdukte"));
+    if (savedProducts) {
+      savedProducts.forEach(item => {
+        if (productInputs[item.index]) productInputs[item.index].value = item.value;
+      });
+    }
+
+    const savedSupermarkt = localStorage.getItem("bestellListeSupermarkt");
+    if (savedSupermarkt) supermarktSelect.value = savedSupermarkt;
+
+    // Änderungen speichern
+    productInputs.forEach(input => input.addEventListener("input", () => {
+      const products = [];
+      productInputs.forEach((inp, idx) => products.push({index: idx, value: inp.value}));
+      localStorage.setItem("bestellListeProdukte", JSON.stringify(products));
+      localStorage.setItem("bestellListeSupermarkt", supermarktSelect.value);
+    }));
+
+    supermarktSelect.addEventListener("change", () => {
+      localStorage.setItem("bestellListeSupermarkt", supermarktSelect.value);
+    });
+  });
+
+  // --- MAIL-FUNKTION an 2 Empfänger ---
   function sendMail() {
     const supermarkt = document.getElementById("supermarkt").value;
     const items = document.querySelectorAll("#product-list li");
@@ -368,48 +398,17 @@
       }
     });
 
-    const recipient = "gc1982@hotmail.de, perlach@cansupermarkt.de";
+    const recipients = "gc1982@hotmail.de, perlach@cansupermarkt.de";
 
-    const mailtoLink = "mailto:" + recipient +
+    const mailtoLink = "mailto:" + recipients +
       "?subject=" + encodeURIComponent("Bestellliste " + supermarkt) +
       "&body=" + encodeURIComponent(body);
 
     window.location.href = mailtoLink;
-    <script>
-  const supermarktSelect = document.getElementById("supermarkt");
-  const productInputs = document.querySelectorAll("#product-list li input");
-
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const supermarktSelect = document.getElementById("supermarkt");
-    const productInputs = document.querySelectorAll("#product-list li input");
-
-    const savedProducts = JSON.parse(localStorage.getItem("bestellListeProdukte"));
-    if (savedProducts) {
-      savedProducts.forEach(item => {
-        if (productInputs[item.index]) productInputs[item.index].value = item.value;
-      });
-    }
-
-    const savedSupermarkt = localStorage.getItem("bestellListeSupermarkt");
-    if (savedSupermarkt) supermarktSelect.value = savedSupermarkt;
-
-    productInputs.forEach(input => input.addEventListener("input", () => {
-      const products = [];
-      productInputs.forEach((inp, idx) => products.push({index: idx, value: inp.value}));
-      localStorage.setItem("bestellListeProdukte", JSON.stringify(products));
-      localStorage.setItem("bestellListeSupermarkt", supermarktSelect.value);
-    }));
-
-    supermarktSelect.addEventListener("change", () => {
-      localStorage.setItem("bestellListeSupermarkt", supermarktSelect.value);
-    });
-  });
-
-
+  }
 </script>
 
-  }
+ 
 </script>
 </body>
 </html>
